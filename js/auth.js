@@ -10,21 +10,6 @@ if (form) {
     
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const logo = document.getElementById("Admin-Auth");
-let tapCount = 0;
-
-logo.addEventListener("click", () => {
-    tapCount++;
-
-    if (tapCount === 5) {
-        window.location.href = "/admin.html";
-        tapCount = 0;
-    }
-
-    setTimeout(() => {
-        tapCount = 0;
-    }, 3000);
-});
         const email = document.getElementById("login-email").value.trim();
         const pass = document.getElementById("login-password").value;
         const btn = document.getElementById("login-btn");
