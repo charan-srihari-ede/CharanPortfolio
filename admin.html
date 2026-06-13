@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard CMS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">CMS Dashboard</div>
+            <ul class="sidebar-menu">
+                <li><button class="menu-item active" data-target="dash-panel"><i class="fas fa-chart-pie"></i>
+                        Dashboard</button></li>
+                <li><button class="menu-item" data-target="profile-panel"><i class="fas fa-user-cog"></i> Profile
+                        Info</button></li>
+                <li><button class="menu-item" data-target="exp-panel"><i class="fas fa-briefcase"></i>
+                        Experience</button></li>
+                <li><button class="menu-item" data-target="skills-panel"><i class="fas fa-bolt"></i> Skills</button>
+                </li>
+                <li><button class="menu-item" data-target="edu-panel"><i class="fas fa-graduation-cap"></i>
+                        Education</button></li>
+                <li><button class="menu-item" data-target="projects-panel"><i class="fas fa-tasks"></i>
+                        Projects</button></li>
+                <li><button class="menu-item" data-target="certs-panel"><i class="fas fa-certificate"></i>
+                        Certificates</button></li>
+                <li><button class="menu-item" data-target="resume-panel"><i class="fas fa-file-pdf"></i> Resume
+                        Management</button></li>
+                <li><button class="menu-item" data-target="messages-panel"><i class="fas fa-envelope-open-text"></i>
+                        Messages</button></li>
+                <li><button class="menu-item logout-btn" id="action-logout"><i class="fas fa-sign-out-alt"></i>
+                        Disconnect</button></li>
+            </ul>
+        </aside>
+
+        <main class="admin-content">
+            <header class="admin-header">
+                <button id="sidebar-toggle" class="sidebar-toggle"><i class="fas fa-bars"></i></button>
+                <h1 id="panel-title">System Status Overview</h1>
+            </header>
+
+            <div id="panel-container" class="panel-container">
+                <section id="dash-panel" class="panel active">
+                    <div class="stats-grid">
+                        <div class="stat-card glass-card">
+                            <h3>Total Enquiries</h3>
+                            <p id="stat-messages">0</p>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <h3>Active Deployments</h3>
+                            <p id="stat-projects">0</p>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <h3>Certifications Verified</h3>
+                            <p id="stat-certs">0</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="profile-panel" class="panel">
+                    <form id="form-profile" class="glass-card form-grid">
+                        <div class="form-group"><label>Full Name</label><input type="text" id="prof-name" required>
+                        </div>
+                        <div class="form-group"><label>Professional Title</label><input type="text" id="prof-title"
+                                required></div>
+                        <div class="form-group"><label>Current Corporate Target</label><input type="text"
+                                id="prof-company" required></div>
+                        <div class="form-group full-width"><label>Summary Bio</label><textarea id="prof-summary"
+                                rows="4" required></textarea></div>
+                        <div class="form-group"><label>Direct Contact Email</label><input type="email" id="prof-email"
+                                required></div>
+                        <div class="form-group"><label>Phone Number</label><input type="text" id="prof-phone"></div>
+                        <div class="form-group"><label>LinkedIn URI</label><input type="url" id="prof-linkedin"></div>
+                        <div class="form-group"><label>GitHub URI</label><input type="url" id="prof-github"></div>
+                        <div class="form-group"><label>Portfolio Anchor</label><input type="url" id="prof-portfolio">
+                        </div>
+                        <div class="form-group"><label>Display Image</label><input type="file" id="prof-avatar"
+                                accept="image/*"></div>
+                        <button type="submit" class="submit-btn full-width">Commit Modifications</button>
+                    </form>
+                </section>
+
+                <section id="exp-panel" class="panel">
+                    <form id="form-experience" class="glass-card form-grid">
+                        <input type="hidden" id="exp-id">
+                        <div class="form-group"><label>Enterprise/Company</label><input type="text" id="exp-company"
+                                required></div>
+                        <div class="form-group"><label>Type</label><input type="text" id="exp-type"
+                                placeholder="Full-time, Contract"></div>
+                        <div class="form-group"><label>Location</label><input type="text" id="exp-loc"></div>
+                        <div class="form-group"><label>Enterprise Logo</label><input type="file" id="exp-logo"
+                                accept="image/*"></div>
+                        <div class="form-group"><label>Functional Title</label><input type="text" id="exp-title"
+                                required></div>
+                        <div class="form-group"><label>Timeline Initialization</label><input type="date" id="exp-start"
+                                required></div>
+                        <div class="form-group"><label>Timeline Termination</label><input type="date" id="exp-end">
+                        </div>
+                        <div class="form-group full-width"><label>Operational Responsibilities (Comma delimited
+                                lines)</label><textarea id="exp-desc" rows="4" required></textarea></div>
+                        <button type="submit" class="submit-btn full-width">Append / Update Entry</button>
+                    </form>
+                    <div class="data-table-container glass-card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Company</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-experience"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="skills-panel" class="panel">
+                    <form id="form-skills" class="glass-card form-grid">
+                        <input type="hidden" id="skill-id">
+                        <div class="form-group"><label>Classification Category</label><input type="text" id="skill-cat"
+                                required placeholder="Frontend, Cloud"></div>
+                        <div class="form-group"><label>Skill Designation</label><input type="text" id="skill-name"
+                                required></div>
+                        <div class="form-group"><label>Competency Rating (%)</label><input type="number" id="skill-perc"
+                                min="1" max="100" required></div>
+                        <button type="submit" class="submit-btn">Save Capability</button>
+                    </form>
+                    <div class="data-table-container glass-card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Skill</th>
+                                    <th>Rating</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-skills"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="edu-panel" class="panel">
+                    <form id="form-education" class="glass-card form-grid">
+                        <input type="hidden" id="edu-id">
+                        <div class="form-group"><label>Degree Matrix</label><input type="text" id="edu-degree" required>
+                        </div>
+                        <div class="form-group"><label>Educational Institution</label><input type="text" id="edu-inst"
+                                required></div>
+                        <div class="form-group"><label>Span Definition</label><input type="text" id="edu-duration"
+                                placeholder="2020 - 2024" required></div>
+                        <div class="form-group"><label>Performance Rating/GPA</label><input type="text" id="edu-gpa">
+                        </div>
+                        <div class="form-group"><label>Geographic Hub</label><input type="text" id="edu-loc"></div>
+                        <button type="submit" class="submit-btn full-width">Map Academic Qualification</button>
+                    </form>
+                    <div class="data-table-container glass-card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Degree</th>
+                                    <th>Institution</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-education"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="projects-panel" class="panel">
+                    <form id="form-projects" class="glass-card form-grid">
+                        <input type="hidden" id="proj-id">
+                        <div class="form-group"><label>Project Title</label><input type="text" id="proj-title" required>
+                        </div>
+                        <div class="form-group"><label>Target URL Link</label><input type="url" id="proj-url"></div>
+                        <div class="form-group"><label>Cover Architecture Image</label><input type="file" id="proj-img"
+                                accept="image/*"></div>
+                        <div class="form-group"><label>Core Stack Engine (Comma separate)</label><input type="text"
+                                id="proj-tech" required></div>
+                        <div class="form-group full-width"><label>System Abstract / Scope</label><textarea
+                                id="proj-desc" rows="3" required></textarea></div>
+                        <div class="form-group full-width"><label>Features Implemented (Comma separate)</label><textarea
+                                id="proj-feats" rows="2"></textarea></div>
+                        <button type="submit" class="submit-btn full-width">Publish Application Block</button>
+                    </form>
+                    <div class="data-table-container glass-card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Link</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-projects"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="certs-panel" class="panel">
+                    <form id="form-certs" class="glass-card form-grid">
+                        <input type="hidden" id="cert-id">
+                        <div class="form-group"><label>Certificate Credential Designation</label><input type="text"
+                                id="cert-name" required></div>
+                        <div class="form-group"><label>Authority Issuer</label><input type="text" id="cert-issuer"
+                                required></div>
+                        <div class="form-group"><label>Acquisition Timestamp</label><input type="date" id="cert-date"
+                                required></div>
+                        <div class="form-group"><label>Asset File / Image</label><input type="file" id="cert-file"
+                                accept="image/*"></div>
+                        <button type="submit" class="submit-btn full-width">Log Certification Proof</button>
+                    </form>
+                    <div class="data-table-container glass-card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Credential Name</th>
+                                    <th>Issuer</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-certs"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="resume-panel" class="panel">
+                    <form id="form-resume" class="glass-card">
+                        <div class="form-group"><label>Upload/Overwrite Master Execution Resume (PDF
+                                Layout)</label><input type="file" id="res-file" accept=".pdf" required></div>
+                        <button type="submit" class="submit-btn">Synchronize System PDF</button>
+                    </form>
+                    <div class="glass-card status-box-margin">
+                        <p>Current Linked Resume Asset: <a id="res-status-link" href="#" target="_blank">View Active
+                                Resource</a></p>
+                    </div>
+                </section>
+
+                <section id="messages-panel" class="panel">
+                    <div class="search-filter-wrapper"><input type="text" id="msg-search-box"
+                            placeholder="Filter submissions across elements..."></div>
+                    <div class="data-table-container glass-card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Sender</th>
+                                    <th>Subject</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-messages"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="msg-modal" class="modal-wrapper" aria-hidden="true">
+        <div class="modal-inner glass-card">
+            <span class="modal-close" id="msg-modal-close">&times;</span>
+            <h2>Message Preview</h2>
+            <hr>
+            <p><strong>From:</strong> <span id="view-msg-name"></span> (<span id="view-msg-email"></span>)</p>
+            <p><strong>Subject:</strong> <span id="view-msg-subject"></span></p>
+            <div class="msg-content-body">
+                <p id="view-msg-body"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+    <script type="module" src="js/admin.js"></script>
+</body>
+
+</html>

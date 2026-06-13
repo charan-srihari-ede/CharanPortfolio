@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio & CMS</title>
+    <meta name="description" content="Professional Portfolio Website managed via custom Firebase CMS.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="loading-screen" class="loading-screen">
+        <div class="spinner"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" id="nav-brand">Portfolio</a>
+            <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#certificates" class="nav-link">Certificates</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme"><i
+                            class="fas fa-moon"></i></button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home" class="hero-section">
+        <div class="hero-bg animate-bg"></div>
+        <div class="hero-card glass-card skeleton" id="hero-container">
+        </div>
+        <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
+    </header>
+
+    <main>
+        <section id="about" class="section">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-wrapper glass-card">
+                <p id="bio-text" style="text-align: center;" class="bio-para skeleton-text">Loading biography...</p>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="experience">Experience</button>
+                    <button class="tab-btn" data-tab="skills">Skills</button>
+                    <button class="tab-btn" data-tab="education">Education</button>
+                </div>
+                <div class="tab-content active" id="experience-tab">
+                    <div class="timeline" id="experience-timeline"></div>
+                </div>
+                <div class="tab-content" id="skills-tab">
+                    <div class="search-filter-wrapper">
+                        <input type="text" id="skill-search" placeholder="Search skills...">
+                    </div>
+                    <div class="skills-grid" id="skills-display"></div>
+                </div>
+                <div class="tab-content" id="education-tab">
+                    <div class="timeline" id="education-timeline"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="filter-controls" style="margin-bottom: 10px;">
+                <input type="text" id="project-search" placeholder="Search by name or tech...">
+            </div>
+            <div class="projects-grid" id="projects-display"></div>
+        </section>
+
+        <section id="certificates" class="section">
+            <h2 class="section-title">Certificates</h2>
+            <div class="certificates-grid" id="certificates-display"></div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-info glass-card"  id="contact-details"></div>
+                <div class="contact-form-wrapper glass-card">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="msg-name" required placeholder="Name" maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="msg-email" required placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="msg-subject" required placeholder="Subject" maxlength="150">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="msg-message" required placeholder="Message" rows="5"
+                                maxlength="1000"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" id="msg-submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <button class="lightbox-nav prev" id="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="lightbox-content-wrapper">
+            <img class="lightbox-content" id="lightbox-img" alt="Certificate Preview">
+            <div id="lightbox-caption" class="lightbox-caption" style="z-index: 999;"></div>
+            <div class="lightbox-toolbar">
+                <button id="zoom-in" style="z-index: 999;background-color: rgba(0, 0, 0, 0.515);height: 30px;width: 30px;border-radius: 5px;"><i class="fas fa-plus"></i></button>
+                <button id="zoom-out" style="z-index: 999;background-color: rgba(0, 0, 0, 0.515);height: 30px;width: 30px;border-radius: 5px;"><i class="fas fa-minus"></i></button>
+                <!-- <a id="cert-download" download target="_blank"><i class="fas fa-download"></i></a> -->
+            </div>
+        </div>
+        <button class="lightbox-nav next" id="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

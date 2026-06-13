@@ -1,0 +1,254 @@
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background: #0b0f19;
+    color: #f1f5f9;
+}
+
+.sidebar {
+    width: 280px;
+    background: rgba(17, 24, 39, 0.7);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2000;
+}
+
+.sidebar-brand {
+    padding: 2rem 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #38bdf8;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.menu-item {
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    background: none;
+    border: none;
+    text-align: left;
+    color: #9ca3af;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.2s;
+}
+
+.menu-item i {
+    width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+}
+
+.logout-btn {
+    margin-top: auto;
+    color: #ef4444;
+}
+
+.logout-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+}
+
+.admin-content {
+    flex-1;
+    flex: 1;
+    padding: 2rem;
+    max-width: calc(100vw - 280px);
+    overflow-x: hidden;
+}
+
+.admin-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1rem;
+}
+
+.sidebar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.panel {
+    display: none;
+}
+
+.panel.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 1rem;
+    color: #9ca3af;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+.form-grid label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.data-table-container {
+    margin-top: 2rem;
+    overflow-x: auto;
+    padding: 0;
+    border-radius: 12px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.data-table th {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem 1.5rem;
+    color: #9ca3af;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.data-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #e5e7eb;
+    vertical-align: middle;
+}
+
+.table-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-edit {
+    color: #38bdf8;
+}
+
+.btn-edit:hover {
+    color: #0ea5e9;
+}
+
+.btn-delete {
+    color: #ef4444;
+}
+
+.btn-delete:hover {
+    color: #dc2626;
+}
+
+/* Modals */
+.modal-wrapper {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.8);
+    z-index: 6000;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.modal-wrapper[aria-hidden="false"] {
+    display: flex;
+}
+
+.modal-inner {
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #9ca3af;
+}
+
+.msg-content-body {
+    margin-top: 1.5rem;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    white-space: pre-wrap;
+}
+
+.status-box-margin {
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+}
+
+.status-box-margin a {
+    color: #38bdf8;
+    text-decoration: none;
+}
